@@ -21,11 +21,26 @@ reqRef.on("value", function(snapshot){
 	finder_factory = new FinderFactory()
 	finder         = finder_factory.getFinder(finder_factory.CRAWLER_META)
 	finder.find(crawlerName, function(monitorObj){
-		inspector_factory = new InspectorFactory()
-		inspector         = inspector_factory.getInspector(inspector_factory.INSERT_TIME)
+		let inspector_factory = new InspectorFactory()
+		let inspector         = inspector_factory.getInspector(inspector_factory.INSERT_TIME)
 		inspector.inspect(monitorObj.db, function(delayObj){
-			messenger_facotry = new MessengerFactory()
-			messenger         = messenger_facotry.getMessenger(messenger_facotry.DELAY)
+			let messenger_facotry = new MessengerFactory()
+			let messenger         = messenger_facotry.getMessenger(messenger_facotry.DELAY)
+			messenger.sendMessage(monitorObj, delayObj)
+		})
+		
+		monitorObj.db   	     = new Database()
+		monitorObj.db.host 	     = "220.100.163.138"
+		monitorObj.db.username   = "alex"
+		monitorObj.db.password   = "07081984"
+		monitorObj.db.name       = "isid"
+		monitorObj.db.collection = "mention"
+		monitorObj.db.authSource = "admin"
+		
+		inspector = inspector_factory.getInspector(inspector_factory.CONVERTED_TIME)
+		inspector.inspect(monitorObj.domain, monitorObj.db, function(delayObj){
+			let messenger_factory = new MessengerFactory()
+			let messenger         = messenger_factory.getMessenger(messenger_factory.DELAY)
 			messenger.sendMessage(monitorObj, delayObj)
 		})
 	})
