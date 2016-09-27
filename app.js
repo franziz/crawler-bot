@@ -7,9 +7,12 @@ var Database 	     = require("./lib/object/database")
 var Monitor          = require("./lib/object/monitor")
 var Firebase         = require("./lib/object/firebase")
 
-firebase = new Firebase()
-db       = firebase.database()
-reqRef   = db.ref("requests/crawler_name")
+let firebase = new Firebase()
+firebase.init()
+firebase = firebase.getFirebase()
+
+let db     = firebase.database()
+let reqRef = db.ref("requests/crawler_name")
 
 reqRef.on("value", function(snapshot){
 	crawlerName = snapshot.val()
