@@ -17,4 +17,5 @@ let firebase = new Firebase()
 firebase.init()
 
 setInterval(runMonitor,5*60*1000)
+runMonitor()
 
