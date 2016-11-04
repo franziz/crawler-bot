@@ -1,0 +1,26 @@
+{
+  "name": "crawler-helper",
+  "version": "1.0.0",
+  "description": "AR Crawler Simple Bot",
+  "main": "monitor.js",
+  "dependencies": {
+    "async": "^2.1.2",
+    "firebase": "^3.5.3",
+    "moment": "^2.15.2",
+    "mongodb": "^2.2.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/franziz/crawler-bot.git"
+  },
+  "author": "Frans Siswanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franziz/crawler-bot/issues"
+  },
+  "homepage": "https://github.com/franziz/crawler-bot#readme"
+}
